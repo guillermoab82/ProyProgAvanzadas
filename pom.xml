@@ -4,7 +4,7 @@
   <groupId>mx.unam.sii</groupId>
   <artifactId>ProgAvanzadaProy</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>ProgAvanzadaProy Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -16,11 +16,17 @@
     </dependency>
     <dependency>
     <groupId>javax.servlet</groupId>
-    <artifactId>servlet-api</artifactId>
-    <version>2.5</version>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
     <scope>provided</scope>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-tiles3-plugin -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-tiles3-plugin</artifactId>
+			<version>2.3.32</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -39,13 +45,15 @@
 			<version>4.3.10.Final</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core -->
-		<dependency>
-    		<groupId>org.apache.struts</groupId>
-    		<artifactId>struts2-core</artifactId>
-    		<version>2.5.5</version>
-		</dependency>
   </dependencies>
   <build>
     <finalName>ProgAvanzadaProy</finalName>
+    	<plugins>
+    		<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.1.Final</version>
+			</plugin>
+		</plugins>
   </build>
 </project>

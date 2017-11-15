@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ui.theme" value="simple" />
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+	
+		<default-action-ref name="showLoginForm" />
+		
+		<!--
+			Acción que unicamente preparara un pojo para ser enviado junto con la
+			forma de inicio de sesion al usuario 
+		-->
+		<action name="showLoginForm" method="showLoginForm" 
+			class="mx.unam.sii.action.ShowFormsAction">
+			<result name="success">/login.jsp</result>
+		</action>
+		
+		<!-- 
+			Acción que realiza la autenticacion del usuario al recuperar los valores 
+			de los campos email y password y emplearlos para hacer la busqueda en la
+			basese de datos a traves de los objetos DAO relacionados con la entidad 
+			(tabla) usuarios. En caso de que la autenticacion sea correcta (resultado
+			igual a autenticado, se mostrara la pagina de home.
+		-->
+		<action name="login" method="loginUser" 
+			class="mx.unam.sii.action.LoginAction">
+			<result name="success" type="tiles">home.tiles</result>
+			<result name="input">showLoginForm</result>
+			<result name="not-found">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+	</package>
+</struts>
